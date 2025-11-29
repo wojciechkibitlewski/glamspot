@@ -1,0 +1,233 @@
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+/* Main colors */
+  --color-turquoise: #52C8C1;
+  --color-blue: #41A2DD;
+  --color-pink: #E84EB6;
+  --color-light-purple: #E9D8FA;
+  --color-black: #121212;
+  --color-white: #FFFFFF;
+
+  /* Grayscale */
+  --color-grey-50: #F1F1F1;
+  --color-grey-100: #E8E8E8;
+  --color-grey-200: #D9D9D9;
+  --color-grey-300: #C0C0C0;
+  --color-grey-400: #A1A1A1;
+  --color-grey-500: #777777;
+  --color-grey-600: #606060;
+  --color-grey-700: #404040;
+  --color-grey-800: #2D2D2D;
+  --color-grey-900: #1A1A1A;
+
+  /* Accent colors */
+  --color-accent: var(--color-black);
+  --color-accent-foreground: var(--color-white);
+  --color-accent-content: var(--color-black);
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-neutral-800);
+    }
+    .light {
+        --color-accent: var(--color-black);
+        --color-accent-content: var(--color-black);
+        --color-accent-foreground: var(--color-white);
+    }
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-100, currentColor);
+    }
+
+
+    body {
+        font-family: var(--font-sans);
+        color: var(--color-grey-800);
+        background-color: var(--color-white);
+
+    }
+    body {
+        @apply bg-white dark:bg-grey-900 transition-colors duration-300 m-0 p-0;
+    }
+    .glamspot-main {
+        @apply m-0! p-0!;
+    }
+    input:focus[data-flux-control],
+    textarea:focus[data-flux-control],
+    select:focus[data-flux-control] {
+        @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+    }
+    input.newsletter {
+        @apply p-4 px-6 rounded-full border border-grey-200;
+    }
+
+    /* \[:where(&)\]:size-4 {
+        @apply size-4;
+    } */
+
+
+    /* Desktop headings */
+    h1 {
+    @apply text-[56px] font-medium leading-tight text-black;
+    }
+
+    h2 {
+    @apply text-[32px] font-medium leading-tight text-black;
+    }
+
+    h3 {
+    @apply text-[28px] font-medium leading-snug text-black;
+    }
+
+    h4 {
+    @apply text-[24px] font-medium leading-snug text-black;
+    }
+
+    h5 {
+    @apply text-[20px] font-medium leading-snug text-black;
+    }
+
+    /* Body text */
+    p, span, li {
+    @apply text-[16px] font-normal text-grey-800;
+    }
+
+    strong, b {
+    @apply font-bold;
+    }
+
+    a {
+    @apply text-grey-800 hover:underline;
+    }
+
+    .container-glamspot {
+        @apply mx-auto flex flex-col max-w-7xl px-6 lg:px-8;
+    }
+    .full-colour-margin {
+         @apply w-full flex items-center justify-center bg-linear-to-l from-[#E446B4] to-[#6A80CE] mb-8 -mt-[200px] md:mt-0;
+    }
+    .full-colour {
+         @apply w-full flex items-center justify-center bg-linear-to-l from-[#E446B4] to-[#6A80CE] mb-8 md:mt-0;
+    }
+    .full-colour-container {
+        @apply flex flex-col md:flex-row gap-4 w-full max-w-7xl mx-auto px-6 lg:px-8 py-8 items-center
+    }
+    
+    /* Regular */
+    .text-body-regular-l { @apply text-[18px] font-normal text-grey-800; }
+    .text-body-regular-m { @apply text-[16px] font-normal text-grey-800; }
+    .text-body-regular-s { @apply text-[14px] font-normal text-grey-800; }
+    .text-body-regular-xs { @apply text-[12px] font-normal text-grey-800; }
+
+    /* Medium */
+    .text-body-medium-l { @apply text-[18px] font-medium text-grey-800; }
+    .text-body-medium-m { @apply text-[16px] font-medium text-grey-800; }
+    .text-body-medium-s { @apply text-[14px] font-medium text-grey-800; }
+    .text-body-medium-xs { @apply text-[12px] font-medium text-grey-800; }
+
+    /* Bold */
+    .text-body-bold-l { @apply text-[18px] font-bold text-grey-800; }
+    .text-body-bold-m { @apply text-[16px] font-bold text-grey-800; }
+    .text-body-bold-s { @apply text-[14px] font-bold text-grey-800; }
+    .text-body-bold-xs { @apply text-[12px] font-bold text-grey-800; }
+
+    /* MOBILE TYPOGRAPHY */
+
+    @media (max-width: 768px) {
+        h1 {
+        @apply text-[36px];
+        }
+
+        h2 {
+        @apply text-[28px];
+        }
+
+        h3 {
+        @apply text-[24px];
+        }
+
+        h4 {
+        @apply text-[22px];
+        }
+
+        h5 {
+        @apply text-[20px];
+        }
+
+        p, span, li {
+        @apply text-[14px];
+        }
+        .text-body-regular-l { @apply text-[16px]; }
+        .text-body-regular-m { @apply text-[14px]; }
+        .text-body-regular-s { @apply text-[13px]; }
+        .text-body-regular-xs { @apply text-[12px]; }
+
+        .text-body-medium-l { @apply text-[16px]; }
+        .text-body-medium-m { @apply text-[14px]; }
+        .text-body-medium-s { @apply text-[13px]; }
+        .text-body-medium-xs { @apply text-[12px]; }
+
+        .text-body-bold-l { @apply text-[16px]; }
+        .text-body-bold-m { @apply text-[14px]; }
+        .text-body-bold-s { @apply text-[13px]; }
+        .text-body-bold-xs { @apply text-[12px]; }
+    }
+
+    /* WP class */
+
+    .wp-class p { 
+        @apply mb-2;
+    }
+    .wp-class h2, .wp-class h3, .wp-class h4, .wp-class h5 { 
+        @apply mb-4 mt-6;
+    }
+    .wp-class ul, .wp-class ol {
+        @apply mb-4 pl-6 list-disc;
+
+    }
+    .wp-class li { 
+        @apply mb-2;
+    }
+    .wp-class a { 
+        @apply text-blue underline;
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply  !mb-0 !leading-tight;
+}
+
+/* Daisy  */
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+  root: ":root";
+  include: ;
+  exclude: ;
+  prefix: ;
+  logs: true;
+}

@@ -7,7 +7,8 @@
       "Bash(php artisan view:clear:*)",
       "Bash(php artisan:*)",
       "Bash(php.exe artisan:*)",
-      "Bash(./vendor/bin/sail artisan:*)"
+      "Bash(./vendor/bin/sail artisan:*)",
+      "Bash(dir /s /b databasemigrations*job*.php)"
     ],
     "deny": [],
     "ask": []

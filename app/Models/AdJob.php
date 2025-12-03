@@ -11,8 +11,8 @@ class AdJob extends Model
     use HasFactory;
 
     protected $fillable = [
-        'add_id', 
-        'job_type', 
+        'ad_id',
+        'job_type',
         'employment_form',
         'salary_from',
         'salary_to',
@@ -25,14 +25,14 @@ class AdJob extends Model
     * Relationship
     */
 
-    public function add()
+    public function ad()
     {
         return $this->belongsTo(Ad::class);
     }
 
     public function specializations()
     {
-        return $this->belongsToMany(Industry::class, 'add_job_specialization', 'add_job_id', 'specialization_id');
+        return $this->belongsToMany(Industry::class, 'ad_job_specialization', 'ad_job_id', 'specialization_id');
     }
 
     public function subcategory()

@@ -60,7 +60,7 @@
        
         @if($employment->isNotEmpty())
             <div>
-                <h5 class="text-body-bold-m">{{_('ads.show_work.employment')}}</h5>
+                <h5 class="text-body-bold-m">{{__('ads.show_work.employment')}}</h5>
                 <p class="text-body-regular-m">{{ $employment->join(', ') }}</p>
             </div>
         @endif

@@ -19,6 +19,35 @@ return [
     'edit_ad' => 'Edytuj',
     'pay' => 'Opłać',
     'highlight' => 'Wyróżnij',
+    'extend' => 'Przedłuż',
+
+    'expires_on' => 'Wygasa dnia',
+
+    'create.title' => 'Moje ogłoszenia. Nowe ogłoszenie',
+    'create.subtitle' => 'Dodaj ogłoszenie',
+
+    'form.title' => 'Tytuł ogłoszenia',
+    'form.category' => 'Kategoria',
+    'form.select_category' => 'Wybierz kategorię',
+    'form.subcategory' => 'Podkategoria',
+    'form.select_subcategory' => 'Wybierz podkategorię',
+    'form.course_type' => 'Typ szkolenia',
+    'form.select_course_type' => 'Wybierz typ',
+
+    'photos' => 'Zdjęcia',
+    'contact_info' => 'Dane kontaktowe',
+    'ad_as_firm' => 'Ogłoszenie jako firma',
+    'want_to_add_as_firm' => 'Chcesz dodać ogłoszenie jako firma?',
+    'save_and_continue' => 'Zapisz i przejdź do płatności',
+
+    'status.pending_payment' => 'Oczekujące na płatność',
+    'status.active' => 'Aktywne',
+    'status.in_review' => 'Weryfikacja',
+    'status.expired' => 'Wygasłe',
+    'status.saved' => 'Ogłoszenie zostało zapisane.',
+    'status.updated' => 'Ogłoszenie zostało zaktualizowane.',
+    'status.deleted' => 'Ogłoszenie zostało usunięte.',
+
 
 
 ];

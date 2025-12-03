@@ -58,10 +58,17 @@
                                                     @endphp
                                                     @if($ad->status === 'pending_payment')
                                                         <flux:badge color="fuchsia" class="text-body-regular-xs !font-normal">{{ $statusLabel }}</flux:badge>
+                                                    @elseif($ad->status === 'active')
+                                                        <flux:badge color="teal" class="text-body-regular-xs !font-normal">{{ $statusLabel }}</flux:badge>
+                                                    @elseif($ad->status === 'in_review')
+                                                        <flux:badge color="amber" class="text-body-regular-xs !font-normal">{{ $statusLabel }}</flux:badge>
+                                                    @elseif($ad->status === 'expired')
+                                                        <flux:badge color="red" class="text-body-regular-xs !font-normal">{{ $statusLabel }}</flux:badge>
                                                     @else
                                                         <flux:badge color="lime" class="text-body-regular-xs !font-normal">{{ $statusLabel }}</flux:badge>
                                                     @endif
                                                 </div>
+                                                <div class="text-body-regular-s">{{__('user-ads.expires_on')}}: <b>{{ $ad->expires_at }}</b></div>
                                             </div>
                                         </div>
                                         {{-- actions --}}
@@ -71,8 +78,12 @@
                                             @if ($ad->status === 'pending_payment')
                                                 <flux:button href="{{ route('user-ads.checkout', [$ad->code, $ad->slug]) }}" variant="primary" size="xs" color="fuchsia" class="cursor-pointer">{{ __('user-ads.pay') }}</flux:button>
                                             @endif
-                                            <flux:button href="#" variant="primary" color="teal" size="xs" class="cursor-pointer">{{ __('user-ads.highlight')}}</flux:button>
-
+                                            @if($ad->status === 'active')
+                                                <flux:button href="#" variant="primary" color="teal" size="xs" class="cursor-pointer">{{ __('user-ads.highlight')}}</flux:button>
+                                            @endif
+                                            @if($ad->status === 'expired')
+                                                <flux:button href="#" variant="primary" color="red" size="xs" class="cursor-pointer">{{ __('user-ads.extend')}}</flux:button>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach

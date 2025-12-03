@@ -48,6 +48,11 @@
                 </h1>
                 <div class="flex gap-4">
                     <flux:button href="{{ route('user-ads.edit', [$ad->code, $ad->slug]) }}" variant="outline" size="sm" class="cursor-pointer">Edytuj</flux:button>
+                    <form method="POST" action="{{ route('user-ads.destroy', [$ad->code, $ad->slug]) }}" onsubmit="return confirm('Czy na pewno chcesz usunąć to ogłoszenie?')">
+                        @csrf
+                        @method('DELETE')
+                        <flux:button type="submit" variant="danger" size="sm" class="cursor-pointer !text-white [&_*]:!text-white">Usuń</flux:button>
+                    </form>
                     @if ($ad->status === 'pending_payment')
                         <flux:button href="{{ route('user-ads.checkout', [$ad->code, $ad->slug]) }}" variant="primary" size="sm" color="fuchsia" class="cursor-pointer">Opłać</flux:button>
                     @endif

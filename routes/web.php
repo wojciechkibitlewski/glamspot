@@ -12,6 +12,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\FirmController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\UserAdsController;
@@ -54,6 +55,10 @@ Route::get('/blog/{slug}', action: [BlogController::class, 'category'])->name('b
 Route::get('/blog/{slug}/{code}-{postSlug}', action: [BlogController::class, 'show'])
     ->where('code', '[A-Za-z0-9]{6}')
     ->name('blog.show');
+
+// Payments
+Route::post('/platnosci/zamowienia', [PaymentController::class, 'store'])->name('orders.store');
+
 
 // User routes
 Route::middleware(['auth', 'verified'])->group(function () {

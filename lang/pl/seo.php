@@ -40,4 +40,8 @@ return [
 
     'ads.title' => 'Ogłoszenia GlamSpot - Znajdź najlepsze oferty i usługi modowe',
     'ads.description' => 'Przeglądaj ogłoszenia na GlamSpot, aby znaleźć najlepsze oferty i usługi związane z modą, urodą i stylem życia.',
+
+    'user-ads.title' => 'Moje ogłoszenia',
+    'user-ads.description' => 'Zarządzaj swoimi ogłoszeniami na GlamSpot, edytuj, usuwaj i twórz nowe oferty modowe.',
+    
 ];

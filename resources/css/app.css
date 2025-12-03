@@ -235,3 +235,47 @@
   prefix: ;
   logs: true;
 }
+
+
+
+/**
+    The lines above are intact.
+    The lines below were added by maryUI installer.
+*/
+
+/** daisyUI */
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark;
+}
+
+/* maryUI */
+@source "../../vendor/robsontenorio/mary/src/View/Components/**/*.php";
+
+/* Theme toggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
+* Paginator - Traditional style
+* Because Laravel defaults does not match well the design of daisyUI.
+*/
+
+.mary-table-pagination span[aria-current="page"] > span {
+    @apply bg-primary text-base-100
+}
+
+.mary-table-pagination button {
+    @apply cursor-pointer
+}
+
+.ad-carousel .btn.btn-circle.btn-sm {
+  @apply bg-white text-neutral-800 border border-zinc-200;
+}
+
+.ad-carousel .btn.btn-circle.btn-sm:hover {
+  @apply bg-white opacity-95;
+}
+
+.my-btn{
+  @apply cursor-pointer;
+
+}

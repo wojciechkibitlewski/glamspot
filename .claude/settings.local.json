@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(php artisan db:table:*)"
+      "Bash(php artisan db:table:*)",
+      "Bash(git add:*)",
+      "Bash(git restore:*)",
+      "Bash(php artisan view:clear:*)",
+      "Bash(php artisan:*)",
+      "Bash(php.exe artisan:*)",
+      "Bash(./vendor/bin/sail artisan:*)"
     ],
     "deny": [],
     "ask": []

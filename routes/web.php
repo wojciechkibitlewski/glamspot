@@ -14,6 +14,7 @@ use App\Http\Controllers\FirmController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\UserAccountController;
+use App\Http\Controllers\UserAdsController;
 use App\Http\Controllers\WelcomeController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -63,6 +64,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/moje-konto/powiadomienia', action: [UserAccountController::class, 'notifications'])->name('user-account.notifications');
     Route::get('/moje-konto/newsletter', action: [UserAccountController::class, 'newsletter'])->name('user-account.newsletter');
     Route::get('/moje-konto/firma', action: [FirmController::class, 'manage'])->name('user-account.firm');
+
+    Route::get('/moje-ogloszenia', action: [UserAdsController::class, 'index'])->name('user-ads.index');
+    Route::get('/moje-ogloszenia/{code}/{slug}', action: [UserAdsController::class, 'show'])->name('user-ads.show');
+    Route::get('/moje-ogloszenia/{code}/{slug}/edytuj', action: [UserAdsController::class, 'edit'])->name('user-ads.edit');
+    Route::put('/moje-ogloszenia/{code}/{slug}', action: [UserAdsController::class, 'update'])->name('user-ads.update');
+    Route::delete('/moje-ogloszenia/{code}/{slug}', action: [UserAdsController::class, 'destroy'])->name('user-ads.destroy');
+    Route::get('/moje-ogloszenia/{code}/{slug}/platnosc', action: [UserAdsController::class, 'checkout'])->name('user-ads.checkout');
+    Route::get('/moje-ogloszenia/nowe-ogloszenie', action: [UserAdsController::class, 'create'])->name('user-ads.create');
+    Route::post('/moje-ogloszenia/nowe-ogloszenie', action: [UserAdsController::class, 'store'])->name('user-ads.store');
+
 
 }); 
 

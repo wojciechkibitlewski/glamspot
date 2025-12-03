@@ -59,15 +59,22 @@ return [
     'email_newsletter' => 'Wyślij mi newsletter z nowościami i poradami',
     'email_adds' => 'Wyślij mi e-mail o statusie moich ogłoszeń',
 
-    // newsletter 
+    // newsletter
     'newsletter_heading' => 'Ustawienia konta. Newsletter',
     'newsletter_title' => 'Ustawienia newslettera',
+    'newsletter_main' => 'Zapisz się do newslettera',
+    'newsletter_main_desc' => 'Otrzymuj od nas wiadomości z najnowszymi ogłoszeniami, promocjami i aktualnościami z branży beauty.',
     'newsletter_categories' => 'Kategorie newslettera',
-    'newsletter_news' => 'Nowości w serwisie',
-    'newsletter_jobs' => 'Oferty pracy',
-    'newsletter_events' => 'Szkolenia i wydarzenia',
-    'newsletter_equipment' => 'Sprzęt i urządzenia',
-    'save_newsletter' => 'Zapisz ustawienia newslettera',
+    'newsletter_categories_desc' => 'Wybierz, o jakich kategoriach chcesz otrzymywać informacje:',
+    'newsletter_works' => 'Oferty pracy',
+    'newsletter_works_desc' => 'Ogłoszenia o pracę w branży beauty',
+    'newsletter_courses' => 'Szkolenia i kursy',
+    'newsletter_courses_desc' => 'Informacje o nowych szkoleniach i kursach',
+    'newsletter_devices' => 'Sprzęt i urządzenia',
+    'newsletter_devices_desc' => 'Ogłoszenia sprzedaży sprzętu kosmetycznego',
+    'save_newsletter' => 'Zapisz ustawienia',
+    'newsletter_saved' => 'Ustawienia newslettera zostały zapisane',
+    'saving' => 'Zapisywanie...',
 
     //firm
     'firm_heading' => 'Ustawienia konta. Konto firmowe',
@@ -79,16 +86,24 @@ return [
     'firm_email' => 'E-mail',
     'firm_phone' => 'Telefon',
     'firm_city' => 'Miasto',
+    'firm_city.placeholder' => 'Wpisz nazwę miasta',
     'firm_zip' => 'Kod pocztowy',
     'firm_nip' => 'NIP',
     'firm_region' => 'Województwo',
     'firm_address' => 'Adres firmy',
     'firm_www' => 'Strona internetowa',
+    'firm_logo' => 'Logo firmy / avatar',
+
+    'select' => '— wybierz —',
     
     'save_firm' => 'Zapisz dane firmy',
+    'saved_firm' => 'Dane firmy zostały zapisane',
     'cancel_firm' => 'Anuluj',
     'dont_have_firm' => 'Nie dodał_ś jeszcze danych swojej firmy.',
     'add_your_firm' => 'Dodaj dane swojej firmy',
 
+    'drag_drop_logo' => 'Przeciągnij i upuść tutaj lub kliknij, aby przeglądać',
+    'uploading' => 'Wgrywanie...',
+    'jpg_png_webp' => 'PNG, JPG, WEBP do 10 MB',
 
 ];

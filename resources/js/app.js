@@ -42,14 +42,6 @@ document.addEventListener('alpine:init', () => {
         Flux.boot();
     }
 });
-document.addEventListener ('flux:ready', () => {
-    // 4. Uruchom Livewire dopiero teraz
-    if (window.Livewire) {
-        window.Livewire.start({
-            navigate: true,
-        });
-    }
-});
 
 // document.addEventListener('alpine:init', () => {
 //     // Bezpieczne bootowanie Flux (jeśli używasz Flux.boot)

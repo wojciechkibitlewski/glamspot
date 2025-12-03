@@ -21,20 +21,8 @@
                         <h2 class="text-xl font-medium">{{__('user-account.newsletter_title')}}</h2>
                     </div>
 
-                    <div class="grid gap-6">
-                        <flux:field>
-                            <flux:label >{{__('user-account.newsletter_categories')}}</flux:label>
-                            <div class="grid md:grid-cols-2 gap-2 my-4">
-                                <flux:checkbox :label="__('user-account.newsletter_news')" />
-                                <flux:checkbox :label="__('user-account.newsletter_jobs')" />
-                                <flux:checkbox :label="__('user-account.newsletter_events')" />
-                                <flux:checkbox :label="__('user-account.newsletter_equipment')" />
-                            </div>
-                        </flux:field>
-                        <div>
-                            <flux:button class="px-5">{{__('user-account.save_newsletter')}}</flux:button>
-                        </div>
-                    </div>
+                    <livewire:user.newsletter-settings />
+
                 </section>
             </div>
         </div>

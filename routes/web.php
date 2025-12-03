@@ -11,6 +11,7 @@ use App\Http\Controllers\AdsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\FirmController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\WelcomeController;
@@ -30,6 +31,9 @@ Route::get('/o-nas', action: [StaticPagesController::class, 'about'])->name('abo
 Route::get('/regulamin', action: [StaticPagesController::class, 'terms'])->name('terms');
 Route::get('/prywatnosc', action: [StaticPagesController::class, 'privacy'])->name('privacy');
 Route::get('/faq', action: [StaticPagesController::class, 'faq'])->name('faq');
+
+// Newsletter
+Route::get('/newsletter/wypisz', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
 Route::get('/uzytkownik/{code}', [UserAccountController::class, 'show'])->name('user-account.show');
 

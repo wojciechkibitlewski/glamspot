@@ -69,7 +69,7 @@
 
     <div class="footer">
         <p>To wiadomość została wysłana z serwisu GlamSpot</p>
-        <p>Jeśli chcesz zrezygnować z newslettera, możesz to zrobić w ustawieniach konta.</p>
+        <p>Jeśli chcesz zrezygnować z newslettera, <a href="{{ route('newsletter.unsubscribe', ['email' => $email]) }}" style="color: #BA75EC; text-decoration: underline;">kliknij tutaj</a>.</p>
     </div>
 </body>
 </html>

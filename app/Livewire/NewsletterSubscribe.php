@@ -34,7 +34,7 @@ class NewsletterSubscribe extends Component
         }
 
         // Wyślij email powitalny
-        Mail::to($this->email)->send(new NewsletterWelcome());
+        Mail::to($this->email)->send(new NewsletterWelcome($this->email));
 
         // Pokaż modal z potwierdzeniem
         $this->showModal = true;

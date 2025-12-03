@@ -76,7 +76,7 @@ class TwoFactor extends Component
             $this->qrCodeSvg = $user?->twoFactorQrCodeSvg();
             $this->manualSetupKey = decrypt($user->two_factor_secret);
         } catch (Exception) {
-            $this->addError('setupData', 'Failed to fetch setup data.');
+            $this->addError('setupData', 'Nie udało się pobrać danych konfiguracyjnych.');
 
             $this->reset('qrCodeSvg', 'manualSetupKey');
         }
@@ -159,24 +159,24 @@ class TwoFactor extends Component
     {
         if ($this->twoFactorEnabled) {
             return [
-                'title' => __('Two-Factor Authentication Enabled'),
-                'description' => __('Two-factor authentication is now enabled. Scan the QR code or enter the setup key in your authenticator app.'),
-                'buttonText' => __('Close'),
+                'title' => __('Włączono uwierzytelnianie dwuskładnikowe'),
+                'description' => __('Uwierzytelnianie dwuskładnikowe jest teraz włączone. Zeskanuj kod QR lub wprowadź klucz konfiguracyjny w aplikacji uwierzytelniającej.'),
+                'buttonText' => __('Zamknij'),
             ];
         }
 
         if ($this->showVerificationStep) {
             return [
-                'title' => __('Verify Authentication Code'),
-                'description' => __('Enter the 6-digit code from your authenticator app.'),
-                'buttonText' => __('Continue'),
+                'title' => __('Weryfikacja kodu uwierzytelniającego'),
+                'description' => __('Wprowadź 6-cyfrowy kod z aplikacji uwierzytelniającej.'),
+                'buttonText' => __('Dalej'),
             ];
         }
 
         return [
-            'title' => __('Enable Two-Factor Authentication'),
-            'description' => __('To finish enabling two-factor authentication, scan the QR code or enter the setup key in your authenticator app.'),
-            'buttonText' => __('Continue'),
+            'title' => __('Włącz uwierzytelnianie dwuskładnikowe'),
+            'description' => __('Aby zakończyć proces włączania uwierzytelniania dwuskładnikowego, zeskanuj kod QR lub wprowadź klucz konfiguracyjny w aplikacji uwierzytelniającej.'),
+            'buttonText' => __('Dalej'),
         ];
     }
 }

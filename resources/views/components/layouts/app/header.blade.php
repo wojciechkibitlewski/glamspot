@@ -13,16 +13,16 @@
             <flux:spacer />
             
             <flux:navbar class="flex gap-8 -mb-px max-lg:hidden !font-normal !text-grey-900">
-                <a href="#" class="text-body-regular-m" title="{{__('header.navbar.ads.title')}}">{{__('header.navbar.ads')}}</a>
+                <a href="{{ route('ads.index') }}" class="text-body-regular-m" title="{{__('header.navbar.ads.title')}}">{{__('header.navbar.ads')}}</a>
                 <a href="#" class="text-body-regular-m" title="{{__('header.navbar.firm.title')}}">{{__('header.navbar.firm')}}</a>
-                <a href="#" class="text-body-regular-m" title="{{__('header.navbar.blog.title')}}">{{__('header.navbar.blog')}}</a>
+                <a href="{{ route('blog') }}" class="text-body-regular-m" title="{{__('header.navbar.blog.title')}}">{{__('header.navbar.blog')}}</a>
                 <a href="#" class="text-body-regular-m" title="{{__('header.navbar.about.title')}}">{{__('header.navbar.about')}}</a>
             </flux:navbar>
 
             <flux:spacer />
 
             <flux:navbar class="flex gap-8 -mb-px max-lg:hidden !font-normal !text-grey-900">
-                <a href="#" class="text-body-regular-m" title="{{__('header.navbar.user-account')}}">
+                <a href="{{ route('user-account.index') }}" class="text-body-regular-m" title="{{__('header.navbar.user-account')}}">
                     {{__('header.navbar.user-account')}}
                 </a>
                 @auth
@@ -63,18 +63,18 @@
                     </button>
                     
                     <flux:menu>
-                        <flux:menu.item href="{{ route('user-account.index') }}" >Moje konto</flux:menu.item>
-                        <flux:menu.item href="{{ route('user-ads.index') }}" >Moje ogłoszenia</flux:menu.item>
-                        <flux:menu.item href="{{ route('user-account.billing') }}" >Płatności</flux:menu.item>
+                        <flux:menu.item href="{{ route('user-account.index') }}">{{__('header.navbar.user-account')}}</flux:menu.item>
+                        <flux:menu.item href="#" >{{__('header.navbar.my-ads')}}</flux:menu.item>
+                        <flux:menu.item href="#" >{{__('header.navbar.payments')}}</flux:menu.item>
                         <flux:menu.separator />
-                        @role('Administrator')
+                        {{-- @role('Administrator')
                         <flux:menu.item href="{{ route('admin.index') }}" >Panel administratora</flux:menu.item>
                         <flux:menu.separator />
-                        @endrole
+                        @endrole --}}
                         <form method="POST" action="{{ route('logout') }}" class="w-full">
                             @csrf
                             <flux:menu.item as="button" type="submit" class="w-full cursor-pointer" data-test="logout-button">
-                                {{ __('Wyloguj się') }}
+                                {{ __('header.navbar.logout') }}
                             </flux:menu.item>
                         </form>
                     </flux:menu>

@@ -21,8 +21,5 @@ return [
     'navbar.login' => 'Zaloguj się',
     'navbar.register' => 'Zarejestruj się',
     'navbar.logout' => 'Wyloguj się',
-    
-
-
 
 ];

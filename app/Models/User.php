@@ -8,11 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +26,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'phone',
+        'city',
+        'code',
     ];
 
     /**
@@ -60,5 +67,31 @@ class User extends Authenticatable
             ->take(2)
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
+    }
+
+    protected static function booted()
+    {
+        static::creating(function (User $user) {
+            if (empty($user->code)) {
+                $user->code = self::generateUniqueCode();
+            }
+        });
+    }
+
+    public static function generateUniqueCode(): string
+    {
+        do {
+            $code = Str::random(5);
+        } while (self::query()->where('code', $code)->exists());
+
+        return $code;
+    }
+
+    /**
+     * Relationship: Firm profile (if any).
+     */
+    public function firm()
+    {
+        return $this->hasOne(Firm::class);
     }
 }

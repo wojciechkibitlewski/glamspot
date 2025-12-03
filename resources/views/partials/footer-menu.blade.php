@@ -29,13 +29,9 @@
     <div class="flex flex-col w-full gap-4">
         <h6 class="text-body-medium-m">{{ __('footer.newsletter') }}</h6>
         <p class="text-body-regular-xs">{{ __('footer.newsletter_body') }}</p>
-        
-        <form method="POST" wire:submit="" class="flex flex-col md:flex-row  gap-2">
-            <input type="text" class="newsletter"/>
-            <button class="px-8 py-4 rounded-full bg-linear-to-r from-[#BA75EC] to-[#1FC2D7] text-white font-medium text-body-medium-m hover:opacity-90 transition">
-                {{ __('footer.subskrybuj') }}
-            </button>
-        </form>
+
+        <livewire:newsletter-subscribe />
+
         <p class="text-body-regular-xs  text-grey-400">{{ __('footer.newsletter_zgoda') }} <a href="" title="" class="underline  text-grey-400">{{ __('footer.polityka_prywatnosci') }}</a></p>
     </div>
     

@@ -212,6 +212,10 @@
     .wp-class a { 
         @apply text-blue underline;
     }
+
+    .wp-class img {
+        @apply max-w-full h-auto my-6;
+    }
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
@@ -224,7 +228,7 @@
 
 /* Daisy  */
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+  themes: light --default, light --prefersdark;
   root: ":root";
   include: ;
   exclude: ;

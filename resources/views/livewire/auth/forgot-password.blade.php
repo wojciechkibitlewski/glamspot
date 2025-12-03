@@ -1,31 +1,47 @@
-<x-layouts.auth>
-    <div class="flex flex-col gap-6">
-        <x-auth-header :title="__('Forgot password')" :description="__('Enter your email to receive a password reset link')" />
+<div class="w-full">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 mb-4 gap-4 my-8 flex flex-col md:flex-row">
+        <div class="flex justify-center items-center w-full border border-gray-300 rounded-xl text-left mb-6 lg:mb-0">
+            <div class="p-4 lg:m-[80px] w-full">
+                <x-auth-header-left 
+                    :title="__('auth.reset_password')" 
+                    :description="__('auth.reset_password_description')" 
+                    />
+                <!-- Session Status --><br/>
+                <x-auth-session-status class="text-left" :status="session('status')" />
 
-        <!-- Session Status -->
-        <x-auth-session-status class="text-center" :status="session('status')" />
+                <form method="POST" wire:submit="sendPasswordResetLink" class="flex flex-col gap-6  mt-6 font-light">
+                    @csrf
+                    <flux:input
+                        wire:model="email"
+                        :label="__('auth.email_field')"
+                        type="email"
+                        required
+                        autofocus
+                        placeholder="email@example.com"
+                    />
 
-        <form method="POST" action="{{ route('password.email') }}" class="flex flex-col gap-6">
-            @csrf
-
-            <!-- Email Address -->
-            <flux:input
-                name="email"
-                :label="__('Email Address')"
-                type="email"
-                required
-                autofocus
-                placeholder="email@example.com"
-            />
-
-            <flux:button variant="primary" type="submit" class="w-full" data-test="email-password-reset-link-button">
-                {{ __('Email password reset link') }}
-            </flux:button>
-        </form>
-
-        <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-400">
-            <span>{{ __('Or, return to') }}</span>
-            <flux:link :href="route('login')" wire:navigate>{{ __('log in') }}</flux:link>
+                    <button type="submit" class="w-full px-8 py-4 rounded-full bg-gradient-to-r from-[#BA75EC] to-[#1FC2D7] text-white font-medium text-body-medium-m hover:opacity-90 transition cursor-pointer">
+                            {{ __('auth.send_password_reset_link') }}
+                    </button>
+                </form>
+                <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-400 my-6">
+                    <span>{{ __('auth.or_back_to') }}</span>
+                    <flux:link :href="route('login')" wire:navigate class="text-zinc-800 dark:text-zinc-900!">{{ __('auth.login_here') }}</flux:link>
+                </div>
+            </div>
         </div>
+        <div class="w-full rounded-xl aspect-square bg-linear-to-bl from-[#E446B4] to-[#6A80CE] flex items-center justify-center">
+            <svg width="215" height="174" viewBox="0 0 215 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M63.9038 127.148C63.8474 124.91 65.9542 124.157 66.7913 122.05C69.0109 116.511 65.7002 107.5 62.4836 102.694C61.8158 109.673 56.9438 115.824 51.5921 120.009C37.4652 131.051 1.50833 133.751 0.0316833 109.598C-0.937073 93.7025 20.5543 76.1238 30.9661 65.5145C33.5432 62.8904 37.8226 62.0345 35.5935 56.6828C29.3389 56.3348 20.131 61.0469 19.6325 51.4628L37.9543 1.031C39.3651 -0.0976496 41.6976 -0.332785 43.2213 0.607755C45.6291 2.0844 60.4238 47.2962 62.0227 53.7671L82.8557 0.31619C85.0001 -0.097648 87.9346 -0.455054 89.2043 1.64235L107.63 50.9455L126.111 0.306782L132.422 0.278567L180.521 127.12H152.305C156.161 121.9 157.29 117.094 155.07 110.717L121.738 21.7699L109.257 56.8897L136.316 127.129H109.04C109.473 124.148 112.426 122.238 112.784 119.041C113.31 114.423 103.792 87.1939 101.253 81.7764C100.735 80.676 99.9735 79.4439 98.7038 79.1617L86.4673 114.517C85.7996 119.248 91.1324 122.869 92.1106 127.129H63.8944L63.9038 127.148ZM23.5734 53.6731C28.0316 56.8803 36.3742 50.8044 38.9889 56.6358C41.1898 61.536 34.0886 65.5333 31.4457 68.8252C22.9997 79.331 13.0299 94.0881 16.3407 108.403C20.9681 128.399 63.9602 117.028 60.6871 96.0726L34.2674 23.698L32.8754 22.7481C32.0477 27.7141 21.5418 50.4752 23.5734 53.6731ZM85.5268 109.278L97.688 73.1705L78.4822 22.7669C73.8453 35.2385 67.8635 47.7853 65.719 60.8682C73.1869 74.9105 76.1684 93.7871 82.9497 107.632C83.5799 108.92 83.9185 109.579 85.5268 109.278Z" fill="white"/>
+            <path d="M20.7371 151.687V161.918C18.2402 163.349 15.4996 163.867 12.6981 163.867C6.12065 163.867 1.553 159.117 1.553 152.539C1.553 145.962 6.12065 141.211 12.6981 141.211C15.8954 141.211 18.4838 142.186 20.4631 144.196L19.0014 145.718C17.692 144.135 15.0428 143.038 12.6981 143.038C7.06463 143.038 3.56277 147.18 3.56277 152.539C3.56277 157.899 7.06463 162.04 12.6981 162.04C15.0123 162.04 17.083 161.735 18.7274 160.761V153.514H13.5507V151.687H20.7371Z" fill="white"/>
+            <path d="M44.3983 163.319L53.8077 141.76H55.8784L64.9528 163.319H62.6994L60.3547 157.594H48.9355L46.4995 163.319H44.3983ZM59.6239 155.767L54.7517 143.952L49.7273 155.767H59.6239Z" fill="white"/>
+            <path d="M70.475 163.319V141.76H73.4896L81.346 159.847L89.2023 141.76H92.0647V163.319H90.055V144.317H89.9941L81.7723 163.319H80.8892L72.5456 144.317H72.4847V163.319H70.475Z" fill="white"/>
+            <path d="M98.5202 160.609L100.439 159.33C101.504 161.126 103.24 162.04 105.372 162.04C108.082 162.04 110.213 160.396 110.213 157.807C110.213 151.778 99.0987 155.31 99.0987 147.119C99.0987 143.282 102.387 141.211 106.011 141.211C108.356 141.211 110.426 142.003 111.888 143.922L110.152 145.17C109.148 143.769 107.808 143.038 105.95 143.038C103.362 143.038 101.108 144.378 101.108 147.119C101.108 153.605 112.223 149.707 112.223 157.807C112.223 161.705 109.026 163.867 105.524 163.867C102.692 163.867 100.195 162.953 98.5202 160.609Z" fill="white"/>
+            <path d="M138.131 152.539C138.131 145.962 142.699 141.211 149.276 141.211C155.854 141.211 160.421 145.962 160.421 152.539C160.421 159.117 155.854 163.867 149.276 163.867C142.699 163.867 138.131 159.117 138.131 152.539ZM140.141 152.539C140.141 157.899 143.643 162.04 149.276 162.04C154.91 162.04 158.411 157.899 158.411 152.539C158.411 147.18 154.91 143.038 149.276 143.038C143.643 143.038 140.141 147.18 140.141 152.539Z" fill="white"/>
+            <path d="M118.911 163.319V141.76H125.123C128.168 141.76 132.066 142.947 132.066 147.454C132.066 151.352 128.96 153.087 125.58 153.087H120.921V163.319H118.911ZM120.921 143.587V151.26H125.488C127.772 151.26 130.056 150.286 130.056 147.454C130.056 144.683 127.681 143.587 125.366 143.587H120.921Z" fill="white"/>
+            <path d="M29.2194 163.319V141.76H31.2291V161.492H41.278V163.319H29.2194Z" fill="white"/>
+            <path d="M172.328 163.319V143.587H164.959V141.76H181.707V143.587H174.338V163.319H172.328Z" fill="white"/>
+            </svg>
+        </div>        
     </div>
-</x-layouts.auth>
+</div>

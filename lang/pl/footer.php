@@ -32,6 +32,7 @@ return [
     'newsletter_body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, omnis similique quas quaerat ut id vitae debitis quae placeat consequatur eveniet recusandae! Enim id aperiam ea explicabo soluta accusamus cumque.',
     'subskrybuj' => 'Subskrybuj',
     'newsletter_zgoda' => 'Wyrażam zgodę na ',
+    'email_placeholder' => 'Twój adres e-mail',
 
     'polityka_prywatnosci' => 'Polityka prywatności',
     'regulamin' => 'Regulamin',

@@ -26,7 +26,7 @@
                     {{__('header.navbar.user-account')}}
                 </a>
                 @auth
-                    <a href="#" class="text-body-regular-m border border-gray-300 flex justify-center gap-3 px-4 py-2 rounded-full font-medium-l hover:no-underline hover:bg-grey-50 cursor-pointer" title="{{ __('header.navbar.post-ad') }}">
+                    <a href="{{route('user-ads.create')}}" class="text-body-regular-m border border-gray-300 flex justify-center gap-3 px-4 py-2 rounded-full font-medium-l hover:no-underline hover:bg-grey-50 cursor-pointer" title="{{ __('header.navbar.post-ad') }}">
                         {{ __('header.navbar.post-ad') }}
                         <flux:icon.plus variant="solid" />
                     </a>
@@ -64,8 +64,8 @@
                     
                     <flux:menu>
                         <flux:menu.item href="{{ route('user-account.index') }}">{{__('header.navbar.user-account')}}</flux:menu.item>
-                        <flux:menu.item href="#" >{{__('header.navbar.my-ads')}}</flux:menu.item>
-                        <flux:menu.item href="#" >{{__('header.navbar.payments')}}</flux:menu.item>
+                        <flux:menu.item href="{{ route('user-ads.index') }}" >{{__('header.navbar.my-ads')}}</flux:menu.item>
+                        <flux:menu.item href="{{ route('user-account.billing') }}" >{{__('header.navbar.payments')}}</flux:menu.item>
                         <flux:menu.separator />
                         {{-- @role('Administrator')
                         <flux:menu.item href="{{ route('admin.index') }}" >Panel administratora</flux:menu.item>
@@ -96,19 +96,19 @@
                 <flux:sidebar.collapse class="in-data-flux-sidebar-on-desktop:not-in-data-flux-sidebar-collapsed-desktop:-mr-2" />
             </flux:sidebar.header>
             <flux:sidebar.nav class="text-body-regular-l flex flex-col my-6">
-                <a href="#" class="py-4 border-b border-grey-200" title="{{__('header.navbar.ads.title')}}">{{__('header.navbar.ads')}}</a>
+                <a href="{{  route('ads.index') }}" class="py-4 border-b border-grey-200" title="{{__('header.navbar.ads.title')}}">{{__('header.navbar.ads')}}</a>
                 <a href="#" class="py-4 border-b border-grey-200" title="{{__('header.navbar.firm.title')}}">{{__('header.navbar.firm')}}</a>
-                <a href="#" class="py-4 border-b border-grey-200" title="{{__('header.navbar.blog.title')}}">{{__('header.navbar.blog')}}</a>
+                <a href="{{ route('blog')}}" class="py-4 border-b border-grey-200" title="{{__('header.navbar.blog.title')}}">{{__('header.navbar.blog')}}</a>
                 <a href="#" class="py-4 border-b border-grey-200" title="{{__('header.navbar.about.title')}}">{{__('header.navbar.about')}}</a>
             </flux:sidebar.nav>
             <flux:sidebar.nav class="flex flex-col my-6 justify-center gap-6">
-                <a href="#" class="flex justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#BA75EC] to-[#1FC2D7] text-white font-medium-l text-body-medium-m hover:opacity-90 transition  cursor-pointer">
+                <a href="{{route ('user-ads.create')}}" class="flex justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#BA75EC] to-[#1FC2D7] text-white font-medium-l text-body-medium-m hover:opacity-90 transition  cursor-pointer">
                     {{ __('header.navbar.post-ad') }}
                     <flux:icon.plus variant="solid" />
                 </a>
                 @if( Auth()->user() )
                 @else
-                    <a href="#" class="text-body-regular-l py-4 text-center" title="{{__('header.navbar.user-account')}}">{{__('header.navbar.user-account')}}</a>
+                    <a href="{{ route('user-account') }}" class="text-body-regular-l py-4 text-center" title="{{__('header.navbar.user-account')}}">{{__('header.navbar.user-account')}}</a>
                 @endif
             </flux:sidebar.nav>
             <flux:sidebar.spacer />
@@ -126,8 +126,8 @@
                         </div>
                     </div>
                     <a href="{{ route('user-account.index') }}" title="{{__('header.navbar.user-account')}}" class="py-4 border-b border-grey-400">{{__('header.navbar.user-account')}}</a>
-                    <a href="#" title="{{__('header.navbar.my-ads')}}" class="py-4 border-b border-grey-400">{{__('header.navbar.my-ads')}}</a>
-                    <a href="#" title="{{__('header.navbar.payments')}}" class="py-4 ">{{__('header.navbar.payments')}}</a>
+                    <a href="{{ route('user-ads.index') }}" title="{{__('header.navbar.my-ads')}}" class="py-4 border-b border-grey-400">{{__('header.navbar.my-ads')}}</a>
+                    <a href="{{ route('user-account.billing') }}" title="{{__('header.navbar.payments')}}" class="py-4 ">{{__('header.navbar.payments')}}</a>
                     <flux:menu.separator />
 
                     <form method="POST" action="{{ route('logout') }}" class="w-full">
@@ -143,6 +143,10 @@
         </flux:sidebar>
 
         {{ $slot }}
+
+        <flux:modal name="add-ad" variant="flyout">
+            <livewire:ads.create-ad />
+        </flux:modal> 
 
         @fluxScripts
         @livewireScripts

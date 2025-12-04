@@ -13,12 +13,21 @@
             </flux:sidebar.header>
             
             <flux:sidebar.nav>
-                <flux:sidebar.item icon="arrow-right" href="{{ route('admin.dashboard') }}" current>Dashboard</flux:sidebar.item>
+                <flux:sidebar.item icon="arrow-right" href="{{ route('admin.dashboard') }}">Dashboard</flux:sidebar.item>
                 <flux:sidebar.item icon="arrow-right" href="{{ route('admin.users')}}">Użytkownicy</flux:sidebar.item>
                 <flux:sidebar.item icon="arrow-right" href="{{  route('admin.ads') }}">Ogłoszenia</flux:sidebar.item>
+                <flux:sidebar.nav class="ml-7">
+                    <flux:sidebar.item href="{{ route('admin.ads.categories.index') }}" class="font-light">Kategorie</flux:sidebar.item>
+                    <flux:sidebar.item href="{{ route('admin.ads.subcategories.index') }}" class="font-light">Podkategorie</flux:sidebar.item>
+
+                </flux:sidebar.nav>
                 <flux:sidebar.item icon="arrow-right" href="{{ route('admin.firms') }}">Firmy</flux:sidebar.item>
 
                 <flux:sidebar.item icon="arrow-right" href="{{ route('admin.blog') }}">Blog</flux:sidebar.item>
+                <flux:sidebar.nav class="ml-7">
+                    <flux:sidebar.item href="{{ route('admin.blog.categories.index') }}" class="font-light">Kategorie</flux:sidebar.item>
+                    <flux:sidebar.item href="{{ route('admin.blog') }}">Artykuły</flux:sidebar.item>
+                </flux:sidebar.nav>
                 <flux:sidebar.item icon="arrow-right" href="{{ route('admin.payments') }}">Płatności</flux:sidebar.item>
                 <flux:sidebar.item icon="arrow-right" href="{{ route('admin.settings')}}">Ustawienia</flux:sidebar.item>
                 
@@ -97,6 +106,7 @@
             {{ $slot }}
         </flux:main>
         @fluxScripts
+        @stack('scripts')
     </body>
 </html>
 

@@ -52,6 +52,12 @@
 
 @layer base {
 
+    :root {
+        --color-accent: var(--color-black);
+        --color-accent-foreground: var(--color-white);
+        --color-accent-content: var(--color-black);
+    }
+
     *,
     ::after,
     ::before,

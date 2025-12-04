@@ -48,4 +48,9 @@ return [
 
     'new_password' => 'Nowe hasło',
     'save_password' => 'Zapisz nowe hasło',
+
+    'verify_desc' => 'Proszę zweryfikuj swój adres e-mail, klikając link, który właśnie wysłaliśmy na Twój adres.',
+    'verify_send' => 'JNa adres e-mail podany podczas rejestracji wysłano nowy link weryfikacyjny.',
+    'verify_button' => 'Ponownie wyślij e-mail weryfikacyjny',
+
 ];

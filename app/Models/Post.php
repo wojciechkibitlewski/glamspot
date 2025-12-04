@@ -13,7 +13,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'post_category_id', 
+        'post_category_id',
         'title',
         'slug',
         'code',
@@ -24,7 +24,7 @@ class Post extends Model
         'seo_keywords',
         'is_published',
         'published_at',
-        'featured_image_url'
+        'featured_image'
     ];
 
     protected function casts(): array

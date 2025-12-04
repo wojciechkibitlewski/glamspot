@@ -29,8 +29,18 @@
 
 <style>[x-cloak]{display:none}</style>
 
+
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 @livewireStyles
 
+<link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/47.3.0/ckeditor5.css" />
 
 @include('partials.city-search-script')
+
+<style>
+	.main-container {
+		width: 795px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+</style>

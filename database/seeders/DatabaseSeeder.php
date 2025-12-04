@@ -14,15 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        $user = User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
         $adminRole = Role::firstOrCreate(['name' => 'Administrator']);
-        $user->assignRole($adminRole);
 
+        $admin = User::firstOrCreate(
+            ['email' => 'test@example.com'],
+            [
+                'name' => 'Test User',
+                'password' => 'password',
+            ]
+        );
+
+        if (! $admin->email_verified_at) {
+            $admin->forceFill(['email_verified_at' => now()])->save();
+        }
+
+        if (! $admin->hasRole($adminRole)) {
+            $admin->assignRole($adminRole);
+        }
+
+        User::factory()->count(30)->create();
     }
 }

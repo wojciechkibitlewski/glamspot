@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\FirmsAdminController;
 use App\Http\Controllers\Admin\PaymentsAdminController;
 use App\Http\Controllers\Admin\SettingsAdminController;
 use App\Http\Controllers\Admin\UsersAdminController;
+use App\Http\Controllers\Admin\PostCategoryAdminController;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CityController;
@@ -85,11 +86,47 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Admin routes
 Route::middleware(['auth', 'verified', 'role:Administrator'])->group(function () {
     Route::get('/administracja',  action: [DashboardController::class, 'index'])->name('admin.dashboard');
+    
     Route::get('/administracja/uzytkownicy',  action: [UsersAdminController::class, 'index'])->name('admin.users');
-    Route::get('/administracja/ogloszenia',  action: [AdsAdminController::class, 'index'])->name('admin.ads');
-    Route::get('/administracja/blog',  action: [BlogAdminController::class, 'index'])->name('admin.blog');
+    
+      Route::get('/administracja/ogloszenia',  action: [AdsAdminController::class, 'index'])->name('admin.ads');
+      Route::prefix('/administracja/ogloszenia/kategorie')->name('admin.ads.categories.')->group(function () {
+          Route::get('/', [AdsAdminController::class, 'category'])->name('index');
+          Route::get('/create', [AdsAdminController::class, 'createCategory'])->name('create');
+          Route::post('/', [AdsAdminController::class, 'storeCategory'])->name('store');
+          Route::get('/{category}/edit', [AdsAdminController::class, 'editCategory'])->name('edit');
+          Route::put('/{category}', [AdsAdminController::class, 'updateCategory'])->name('update');
+          Route::delete('/{category}', [AdsAdminController::class, 'destroyCategory'])->name('destroy');
+      });
+
+      Route::prefix('/administracja/ogloszenia/podkategorie')->name('admin.ads.subcategories.')->group(function () {
+          Route::get('/', [AdsAdminController::class, 'subcategories'])->name('index');
+          Route::get('/create', [AdsAdminController::class, 'createSubcategory'])->name('create');
+          Route::post('/', [AdsAdminController::class, 'storeSubcategory'])->name('store');
+          Route::get('/{subcategory}/edit', [AdsAdminController::class, 'editSubcategory'])->name('edit');
+          Route::put('/{subcategory}', [AdsAdminController::class, 'updateSubcategory'])->name('update');
+          Route::delete('/{subcategory}', [AdsAdminController::class, 'destroySubcategory'])->name('destroy');
+      });
+    
+      Route::get('/administracja/blog',  action: [BlogAdminController::class, 'index'])->name('admin.blog');
+      Route::get('/administracja/blog/dodaj',  action: [BlogAdminController::class, 'create'])->name('admin.blog.create');
+      Route::post('/administracja/blog',  action: [BlogAdminController::class, 'store'])->name('admin.blog.store');
+      Route::get('/administracja/blog/{id}/edytuj',  action: [BlogAdminController::class, 'edit'])->name('admin.blog.edit');
+      Route::put('/administracja/blog/{id}',  action: [BlogAdminController::class, 'update'])->name('admin.blog.update');
+
+      Route::prefix('/administracja/blog/kategorie')->name('admin.blog.categories.')->group(function () {
+          Route::get('/', [PostCategoryAdminController::class, 'category'])->name('index');
+          Route::get('/create', [PostCategoryAdminController::class, 'create'])->name('create');
+          Route::post('/', [PostCategoryAdminController::class, 'store'])->name('store');
+          Route::get('/{postCategory}/edit', [PostCategoryAdminController::class, 'edit'])->name('edit');
+          Route::put('/{postCategory}', [PostCategoryAdminController::class, 'update'])->name('update');
+          Route::delete('/{postCategory}', [PostCategoryAdminController::class, 'destroy'])->name('destroy');
+      });
+    
     Route::get('/administracja/platnosci',  action: [PaymentsAdminController::class, 'index'])->name('admin.payments');
+    
     Route::get('/administracja/firmy',  action: [FirmsAdminController::class, 'index'])->name('admin.firms');
+    
     Route::get('/administracja/ustawienia',  action: [SettingsAdminController::class, 'index'])->name('admin.settings');
 
 

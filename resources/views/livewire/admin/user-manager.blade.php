@@ -76,22 +76,9 @@
 
         @scope('cell_actions', $user)
             <div class="flex justify-end gap-2">
-                <flux:button
-                    wire:click="openEditModal({{ $user->id }})"
-                    size="sm"
-                    variant="ghost"
-                    icon="pencil"
-                >
-                </flux:button>
-                <flux:button
-                    wire:click="delete({{ $user->id }})"
-                    wire:confirm="Czy na pewno chcesz usunąć użytkownika {{ $user->name }}?"
-                    size="sm"
-                    variant="ghost"
-                    icon="trash"
-                    class="text-red-600 hover:text-red-800"
-                >
-                </flux:button>
+                <x-mary-button icon="o-pencil" wire:click="openEditModal({{ $user->id }})" spinner class="btn-sm" />
+                <x-mary-button icon="o-trash" wire:click="delete({{ $user->id }})" spinner class="btn-sm" wire:confirm="Czy na pewno chcesz usunąć użytkownika {{ $user->name }}?" />
+                
             </div>
         @endscope
     </x-mary-table>

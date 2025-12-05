@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\FirmsAdminController;
 use App\Http\Controllers\Admin\PaymentsAdminController;
 use App\Http\Controllers\Admin\SettingsAdminController;
 use App\Http\Controllers\Admin\UsersAdminController;
+use App\Http\Controllers\Admin\RolesAdminController;
 use App\Http\Controllers\Admin\PostCategoryAdminController;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\BlogController;
@@ -87,7 +88,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified', 'role:Administrator'])->group(function () {
     Route::get('/administracja',  action: [DashboardController::class, 'index'])->name('admin.dashboard');
     
-    Route::get('/administracja/uzytkownicy',  action: [UsersAdminController::class, 'index'])->name('admin.users');
+      Route::get('/administracja/uzytkownicy',  action: [UsersAdminController::class, 'index'])->name('admin.users');
+      Route::prefix('/administracja/role')->name('admin.roles.')->group(function () {
+          Route::get('/', [RolesAdminController::class, 'index'])->name('index');
+          Route::get('/create', [RolesAdminController::class, 'create'])->name('create');
+          Route::post('/', [RolesAdminController::class, 'store'])->name('store');
+          Route::get('/{role}/edit', [RolesAdminController::class, 'edit'])->name('edit');
+          Route::put('/{role}', [RolesAdminController::class, 'update'])->name('update');
+          Route::delete('/{role}', [RolesAdminController::class, 'destroy'])->name('destroy');
+      });
     
       Route::get('/administracja/ogloszenia',  action: [AdsAdminController::class, 'index'])->name('admin.ads');
       Route::prefix('/administracja/ogloszenia/kategorie')->name('admin.ads.categories.')->group(function () {

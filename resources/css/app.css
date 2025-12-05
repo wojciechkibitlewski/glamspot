@@ -285,3 +285,7 @@
   @apply cursor-pointer;
 
 }
+
+.menu-title {
+  @apply hidden;
+}

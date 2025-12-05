@@ -12,26 +12,35 @@
                 <flux:sidebar.collapse class="lg:hidden" />
             </flux:sidebar.header>
             
-            <flux:sidebar.nav>
-                <flux:sidebar.item icon="arrow-right" href="{{ route('admin.dashboard') }}">Dashboard</flux:sidebar.item>
-                <flux:sidebar.item icon="arrow-right" href="{{ route('admin.users')}}">Użytkownicy</flux:sidebar.item>
-                <flux:sidebar.item icon="arrow-right" href="{{  route('admin.ads') }}">Ogłoszenia</flux:sidebar.item>
-                <flux:sidebar.nav class="ml-7">
-                    <flux:sidebar.item href="{{ route('admin.ads.categories.index') }}" class="font-light">Kategorie</flux:sidebar.item>
-                    <flux:sidebar.item href="{{ route('admin.ads.subcategories.index') }}" class="font-light">Podkategorie</flux:sidebar.item>
-
-                </flux:sidebar.nav>
-                <flux:sidebar.item icon="arrow-right" href="{{ route('admin.firms') }}">Firmy</flux:sidebar.item>
-
-                <flux:sidebar.item icon="arrow-right" href="{{ route('admin.blog') }}">Blog</flux:sidebar.item>
-                <flux:sidebar.nav class="ml-7">
-                    <flux:sidebar.item href="{{ route('admin.blog.categories.index') }}" class="font-light">Kategorie</flux:sidebar.item>
-                    <flux:sidebar.item href="{{ route('admin.blog') }}">Artykuły</flux:sidebar.item>
-                </flux:sidebar.nav>
-                <flux:sidebar.item icon="arrow-right" href="{{ route('admin.payments') }}">Płatności</flux:sidebar.item>
-                <flux:sidebar.item icon="arrow-right" href="{{ route('admin.settings')}}">Ustawienia</flux:sidebar.item>
+            <x-mary-menu activate-by-route>
+                <x-mary-menu-item title="Użytkownicy" link="{{ route('admin.users')}}" />
+                <x-mary-menu-item title="Role użytkowników" link="{{ route('admin.roles.index') }}" />
+                <x-mary-menu-separator />
+                <x-mary-menu-sub title="Ogłoszenia">
+                    <x-mary-menu-item title="Ogłoszenia" link="{{  route('admin.ads') }}" />
+                    <x-mary-menu-item title="Kategorie ogłoszeń" link="{{ route('admin.ads.categories.index') }}" />
+                    <x-mary-menu-item title="Podkategorie ogłoszeń" link="{{ route('admin.ads.subcategories.index') }}" />
+                    <x-mary-menu-item title="Szkolenia. Branże" link="#" />
+                    <x-mary-menu-item title="Praca. Branże" link="#" />
+                    <x-mary-menu-item title="Filtry" link="#" />
+                </x-mary-menu-sub>
+                <x-mary-menu-item title="Firmy" link="#" />
+                <x-mary-menu-separator />
+                <x-mary-menu-sub title="Blog">
+                    <x-mary-menu-item title="Blog" link="{{ route('admin.blog') }}" />
+                    <x-mary-menu-item title="Kategorie bloga" link="{{ route('admin.blog.categories.index') }}" />
+                </x-mary-menu-sub>
+                <x-mary-menu-item title="Płatności" link="{{ route('admin.payments') }}" />
+                <x-mary-menu-sub title="Ustawienia">
+                    <x-mary-menu-item title="Ustawienia" link="{{ route('admin.settings')}}" />
+                    <x-mary-menu-item title="Województwa" link="#" />
+                    <x-mary-menu-item title="Miasta" link="#" />
+                    <x-mary-menu-item title="Szablony wiadomości" link="#" />
+                    <x-mary-menu-item title="Tłumaczenia" link="#" />
+                </x-mary-menu-sub>
                 
-            </flux:sidebar.nav>
+            </x-mary-menu>
+            
             <flux:sidebar.spacer />
             <flux:sidebar.nav>
                 <flux:sidebar.item icon="arrow-right" href="{{ route('home')}}" target="__blank">Serwis ogłoszeniowy</flux:sidebar.item>
@@ -99,9 +108,6 @@
 
         </flux:header>
         <flux:main>
-            {{-- <flux:heading size="xl" level="1">Good afternoon, Olivia</flux:heading>
-            <flux:text class="mb-6 mt-2 text-base">Here's what's new today</flux:text>
-            <flux:separator variant="subtle" /> --}}
 
             {{ $slot }}
         </flux:main>
